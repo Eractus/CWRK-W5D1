@@ -15,6 +15,11 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true}
 
   attr_reader :password
+
+  has_many :goals,
+    class_name: :Goal,
+    foreign_key: :user_id
+  
   #
   after_initialize :ensure_session_token
 
